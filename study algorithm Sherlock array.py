@@ -19,7 +19,7 @@ def solve(a):
 
 
 T = int(input().strip())
-for a0 in range(T):
+for q in range(T):
     n = int(input().strip())
     a = list(map(int, input().strip().split(' ')))
     result = solve(a)
