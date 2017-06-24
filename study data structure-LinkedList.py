@@ -15,26 +15,16 @@ class Linked_List(object):
     def __init__(self, head = None):
         self.head = head
 
-    def insert(self, data, index = None):
+    def insert(self, data, prev_node = None):
         new_node = Node(data)
-        if index is None:
+        if prev_node is None:
             new_node.set_next(self.head)
             self.head = new_node
         else:
-            current_index = 0
-            current = self.head
-            previous_next_node = None
-            while current_index <= index and current:
-                if current_index == index:
-                    previous_next_node.set_next(new_node)
-                    new_node.set_next(current)
-                    break
-                else:
-                    previous_next_node = current
-                    current = current.get_next()
-                    current_index += 1
-            if current is None:
-                raise ValueError('Index not in list')
+            new_node.set_next(prev_node.get_next())
+            prev_node.set_next(new_node)
+            if prev_node is None:
+                raise ValueError('Node not in list')
 
     def size(self):
         current = self.head
@@ -92,7 +82,7 @@ def main():
     mylist.insert(200)
     mylist.print_list()
     print(mylist.size())
-    mylist.insert(204, 3)
+    mylist.insert(204, mylist.search(110))
     mylist.print_list()
     print(mylist.size())
 
