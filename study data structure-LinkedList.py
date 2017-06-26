@@ -85,6 +85,7 @@ def main():
     mylist.insert(204, mylist.search(110))
     mylist.print_list()
     print(mylist.size())
+    mylist.search(1000)
 
 
 if __name__ == '__main__':
