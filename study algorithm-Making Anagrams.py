@@ -1,21 +1,20 @@
 def number_needed(a, b):
-    #map to hash table
-    dictionary_a = {}
-    number_of_delete = 0
+    table_freq = {}
+    number_concat = 0
     for x in a:
-        if dictionary_a.get(x):
-            dictionary_a[x] +=1
+        if table_freq.get(x):
+            table_freq[x] += 1
         else:
-            dictionary_a[x] = 1
+            table_freq[x] = 1
     for x in b:
-        if dictionary_a.get(x):
-            dictionary_a[x] -= 1
+        if table_freq.get(x):
+            table_freq[x] -= 1
         else:
-            number_of_delete += 1
-    for key, value in dictionary_a.items():
+            number_concat += 1
+    for key, value in table_freq.items():
         if value != 0:
-            number_of_delete += 1
-    return number_of_delete
+            number_concat += abs(value)
+    return number_concat
 
 a = input().strip()
 b = input().strip()
