@@ -65,6 +65,36 @@ def reversed_linked_list(head):
     head.next.next=head
     head.set_next(None)
     return new_head
+
+def merge_lists(headA, headB):
+    if headA is None and headB is None:
+        return None
+    if headA is None and headB:
+        return headB
+    if headA and headB is None:
+        return headA
+    if headA.value < headB.value:
+        headA.next = merge_lists(headA.next, headB)
+    else:
+        tmp = headB
+        headB = headB.next
+        tmp.next = headA
+        headA = tmp
+        headA.next = merge_lists(headA.next, headB)
+    return headA
+def detect_circular_v1(head):
+    table = {}
+    while head:
+        if table.get(head) is None:
+            table[head] = 1
+        else:
+            return 1
+    return 0
+
+def dectect_circular_v2(head):
+    #not so good
+    print('Pending')
+
 def main():
     mylinkedlist = Linked_List_2()
     mylinkedlist.append(Node(10))
