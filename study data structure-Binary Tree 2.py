@@ -5,7 +5,7 @@ class Node:
         self.freq = kwargs.get('frequent', None)
         self.left = kwargs.get('left', None)
         self.right = kwargs.get('right', None)
-        self.child = kwargs.get('child', None)
+        # self.child = kwargs.get('child', None)
 def insert_node(root, node_value, frequent = None):
     new_node = Node(node_value, frequent=frequent)
     if root is None:
@@ -30,13 +30,13 @@ def decodeHuff(root , s):
     current = root
     position = 0
     while position < len(s):
-        if s[position] == 0:
+        if int(s[position]) == 0:
             if current.left is None:
                 print(current.freq, end='')
                 current = root
             else:
                 current = current.left
-        elif s[position] == 1:
+        elif int(s[position]) == 1:
             if current.right is None:
                 print(current.freq, end = '')
                 current = root
