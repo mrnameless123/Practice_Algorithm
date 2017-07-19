@@ -1,6 +1,7 @@
 from collections import deque
+import sys
 
-
+sys.setrecursionlimit(10 ** 6)
 class Node():
     def __init__(self, index, left=None, right=None):
         self.index = index
